@@ -10,66 +10,159 @@ choice = input("Enter your choice: ")
 
 if choice == "1":
     questions = [
-        "What is Java?",
-        "What is OOP?",
-        "What is inheritance in Java?",
-        "What is the difference between == and equals()?",
-        "What is an ArrayList?"
+        {
+            "question": "What is Java?",
+            "keywords": ["programming", "object", "oriented"]
+        },
+        {
+            "question": "What is OOP?",
+            "keywords": ["object", "class", "inheritance"]
+        },
+        {
+            "question": "What is inheritance in Java?",
+            "keywords": ["class", "parent", "child", "inherit"]
+        },
+        {
+            "question": "What is an ArrayList?",
+            "keywords": ["dynamic", "array", "collection"]
+        },
+        {
+            "question": "What is a constructor?",
+            "keywords": ["class", "object", "initialize"]
+        }
     ]
 
 elif choice == "2":
     questions = [
-        "What is Python?",
-        "What is a list in Python?",
-        "What is a tuple?",
-        "What is a dictionary?",
-        "What is OOP in Python?"
+        {
+            "question": "What is Python?",
+            "keywords": ["programming", "language", "interpreted"]
+        },
+        {
+            "question": "What is a list in Python?",
+            "keywords": ["ordered", "mutable", "collection"]
+        },
+        {
+            "question": "What is a tuple?",
+            "keywords": ["ordered", "immutable", "collection"]
+        },
+        {
+            "question": "What is a dictionary?",
+            "keywords": ["key", "value", "pair"]
+        },
+        {
+            "question": "What is OOP in Python?",
+            "keywords": ["object", "class", "inheritance"]
+        }
     ]
 
 elif choice == "3":
     questions = [
-        "What is an array?",
-        "What is a linked list?",
-        "What is a stack?",
-        "What is a queue?",
-        "What is binary search?"
+        {
+            "question": "What is an array?",
+            "keywords": ["elements", "index", "memory"]
+        },
+        {
+            "question": "What is a linked list?",
+            "keywords": ["nodes", "pointer", "data"]
+        },
+        {
+            "question": "What is a stack?",
+            "keywords": ["lifo", "push", "pop"]
+        },
+        {
+            "question": "What is a queue?",
+            "keywords": ["fifo", "enqueue", "dequeue"]
+        },
+        {
+            "question": "What is binary search?",
+            "keywords": ["sorted", "divide", "half"]
+        }
     ]
 
 elif choice == "4":
     questions = [
-        "What is DBMS?",
-        "What is a primary key?",
-        "What is a foreign key?",
-        "What is normalization?",
-        "What is SQL?"
+        {
+            "question": "What is DBMS?",
+            "keywords": ["database", "management", "system"]
+        },
+        {
+            "question": "What is a primary key?",
+            "keywords": ["unique", "identify", "record"]
+        },
+        {
+            "question": "What is a foreign key?",
+            "keywords": ["table", "reference", "primary"]
+        },
+        {
+            "question": "What is normalization?",
+            "keywords": ["redundancy", "data", "tables"]
+        },
+        {
+            "question": "What is SQL?",
+            "keywords": ["query", "database", "language"]
+        }
     ]
 
 elif choice == "5":
     questions = [
-        "What is a computer network?",
-        "What is an IP address?",
-        "What is the difference between TCP and UDP?",
-        "What is DNS?",
-        "What is HTTP?"
+        {
+            "question": "What is a computer network?",
+            "keywords": ["devices", "communication", "network"]
+        },
+        {
+            "question": "What is an IP address?",
+            "keywords": ["address", "device", "network"]
+        },
+        {
+            "question": "What is the difference between TCP and UDP?",
+            "keywords": ["connection", "reliable", "fast"]
+        },
+        {
+            "question": "What is DNS?",
+            "keywords": ["domain", "name", "ip"]
+        },
+        {
+            "question": "What is HTTP?",
+            "keywords": ["protocol", "web", "communication"]
+        }
     ]
 
 else:
-    print("❌ Invalid choice!")
+    print(" Invalid choice!")
     exit()
 
 print("\nLet's begin the interview!")
 print("Type 'exit' anytime to end.\n")
 
+score = 0
+
 for question in questions:
 
-    print("Bot:", question)
+    print("Bot:", question["question"])
 
-    answer = input("You: ")
+    answer = input("You: ").lower()
 
-    if answer.lower() == "exit":
+    if answer == "exit":
         print("Bot: Interview ended. Goodbye! 👋")
         break
 
-    print("Bot: Thank you for your answer!\n")
+    matched_keywords = 0
 
-print("Bot: Interview completed! 🎉")
+    for keyword in question["keywords"]:
+        if keyword in answer:
+            matched_keywords += 1
+
+    if matched_keywords >= 2:
+        print("Bot:  Good answer!")
+        score += 1
+    else:
+        print("Bot: ⚠️ Your answer needs improvement.")
+
+    print()
+
+print("--------------------------------")
+print("       INTERVIEW RESULT")
+print("--------------------------------")
+print("Score:", score, "/", len(questions))
+print("--------------------------------")
