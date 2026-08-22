@@ -26,77 +26,99 @@ categories = {
 
 if choice not in categories:
     print(" Invalid choice!")
-    exit()
+    return None
 
-category = categories[choice]
+return categories[choice]
 
 
-# Choose difficulty
-print("\nChoose difficulty:")
-print("1. Easy")
-print("2. Intermediate")
-print("3. Advanced")
+def choose_category():  
+    print("\nChoose difficulty:")
+    print("1. Easy")
+    print("2. Intermediate")
+    print("3. Advanced")
 
-difficulty_choice = input("Enter difficulty: ")
+    choice= input("Enter difficulty: ")
 
-difficulties = {
-    "1": "Easy",
-    "2": "Intermediate",
-    "3": "Advanced"
+    difficulties = {
+        "1": "Easy",
+        "2": "Intermediate",
+        "3": "Advanced"
 }
 
-if difficulty_choice not in difficulties:
-    print("❌ Invalid difficulty!")
-    exit()
+    if choice not in difficulties:
+        print("❌ Invalid difficulty!")
+        return None
 
-difficulty = difficulties[difficulty_choice]
-
-
-# Get questions based on category and difficulty
-questions = questions_data[category][difficulty]
+    return difficulties[choice]
 
 
-# Start interview
-print("\n--------------------------------")
-print("Interview Started")
-print("Category:", category)
-print("Difficulty:", difficulty)
-print("--------------------------------\n")
+def conduct_interview(questions):
+    score = 0
 
-print("Type 'exit' anytime to end.\n")
+    print("\nLet's begin the interview!")
+    print("Type 'exit' anytime to end.\n")
 
-score = 0
+    for question in questions:
 
-for question in questions:
+        print("Bot:", question["question"])
 
-    print("Bot:", question["question"])
+        answer = input("You: ").lower()
 
-    answer = input("You: ").lower()
+        if answer == "exit":
+            print("Bot: Interview ended. Goodbye! 👋")
+            break
 
-    if answer == "exit":
-        print("Bot: Interview ended. Goodbye! 👋")
-        break
+        matched_keywords = 0
 
-    matched_keywords = 0
+        for keyword in question["keywords"]:
+            if keyword.lower() in answer:
+                matched_keywords += 1
 
-    for keyword in question["keywords"]:
-        if keyword.lower() in answer:
-            matched_keywords += 1
+        if matched_keywords >= 2:
+            print("Bot: ✅ Good answer!")
+            score += 1
+        else:
+            print("Bot: ⚠️ Your answer needs improvement.")
 
-    if matched_keywords >= 2:
-        print("Bot: ✅ Good answer!")
-        score += 1
-    else:
-        print("Bot: ⚠️ Your answer needs improvement.")
-
-    print()
+        print()
+    return score
 
 
-# Result
-print("--------------------------------")
-print("       INTERVIEW RESULT")
-print("--------------------------------")
-print("Category:", category)
-print("Difficulty:", difficulty)
-print("Score:", score, "/", len(questions))
-print("--------------------------------")
+def show_result(category, difficulty, score, total_questions):
+    print("--------------------------------")
+    print("       INTERVIEW RESULT")
+    print("--------------------------------")
+    print("Category:", category)
+    print("Difficulty:", difficulty)
+    print("Score:", score, "/", total_questions)
+    print("--------------------------------")
+
+
+def main():
+    print("🤖 Welcome to InterviewBot!")
+
+    category = choose_category()
+
+    if category is None:
+        return
+
+    difficulty = choose_difficulty()
+
+    if difficulty is None:
+        return
+
+    questions = questions_data[category][difficulty]
+
+    print("\n--------------------------------")
+    print("Interview Started")
+    print("Category:", category)
+    print("Difficulty:", difficulty)
+    print("--------------------------------")
+
+    score = conduct_interview(questions)
+
+    show_result(category, difficulty, score, len(questions))
+
+
+if __name__ == "__main__":
+    main()
