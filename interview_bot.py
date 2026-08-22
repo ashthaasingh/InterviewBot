@@ -9,6 +9,7 @@ print("5. Computer Networks")
 choice = input("Enter your choice: ")
 
 if choice == "1":
+    category = "Java"
     questions = [
         {
             "question": "What is Java?",
@@ -33,6 +34,7 @@ if choice == "1":
     ]
 
 elif choice == "2":
+    category = "Python"
     questions = [
         {
             "question": "What is Python?",
@@ -57,6 +59,7 @@ elif choice == "2":
     ]
 
 elif choice == "3":
+    category = "DSA"
     questions = [
         {
             "question": "What is an array?",
@@ -81,6 +84,7 @@ elif choice == "3":
     ]
 
 elif choice == "4":
+    category = "DBMS"
     questions = [
         {
             "question": "What is DBMS?",
@@ -105,6 +109,7 @@ elif choice == "4":
     ]
 
 elif choice == "5":
+    category = "Computer Networks"
     questions = [
         {
             "question": "What is a computer network?",
@@ -132,21 +137,46 @@ else:
     print(" Invalid choice!")
     exit()
 
-print("\nLet's begin the interview!")
+# Difficulty selection
+
+print("\n Choose difficulty Level:")
+print("1. Easy")
+print("2. Intermediate")
+print("3. Advanced")
+
+difficulty = input("Enter your choice (1-3): ")
+
+if difficulty == "1":
+    difficulty = "Easy"
+elif difficulty == "2":
+    difficulty = "Intermediate"
+elif difficulty == "3":
+    difficulty = "Advanced"
+else:
+    print("Invalid choice!")
+    exit()
+
+# Start interview
+
+print("\n--------------------------------")
+print("Interview Started")
+print("Category:", category)
+print("Difficulty:", difficulty)
+print("--------------------------------\n")
+
 print("Type 'exit' anytime to end.\n")
 
 score = 0
 
 for question in questions:
-
     print("Bot:", question["question"])
-
-    answer = input("You: ").lower()
+    answer = input("You:").lower()
 
     if answer == "exit":
         print("Bot: Interview ended. Goodbye! 👋")
         break
 
+    
     matched_keywords = 0
 
     for keyword in question["keywords"]:
@@ -154,15 +184,19 @@ for question in questions:
             matched_keywords += 1
 
     if matched_keywords >= 2:
-        print("Bot:  Good answer!")
+        print("Bot: ✅ Good answer!")
         score += 1
     else:
         print("Bot: ⚠️ Your answer needs improvement.")
 
     print()
 
+
+# Result
 print("--------------------------------")
 print("       INTERVIEW RESULT")
 print("--------------------------------")
+print("Category:", category)
+print("Difficulty:", difficulty)
 print("Score:", score, "/", len(questions))
 print("--------------------------------")
