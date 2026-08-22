@@ -1,0 +1,226 @@
+{
+    "Java": {
+        "Beginner": [
+            {
+                "question": "What is Java?",
+                "keywords": ["programming", "language", "object"]
+            },
+            {
+                "question": "What is a class in Java?",
+                "keywords": ["blueprint", "object", "class"]
+            },
+            {
+                "question": "What is an object?",
+                "keywords": ["instance", "class", "state"]
+            }
+        ],
+        "Intermediate": [
+            {
+                "question": "What is inheritance in Java?",
+                "keywords": ["parent", "child", "class"]
+            },
+            {
+                "question": "What is polymorphism?",
+                "keywords": ["many", "forms", "method"]
+            },
+            {
+                "question": "What is an interface?",
+                "keywords": ["abstract", "methods", "class"]
+            }
+        ],
+        "Advanced": [
+            {
+                "question": "How does JVM memory management work?",
+                "keywords": ["heap", "stack", "memory"]
+            },
+            {
+                "question": "What is garbage collection?",
+                "keywords": ["memory", "objects", "heap"]
+            },
+            {
+                "question": "What is the difference between HashMap and ConcurrentHashMap?",
+                "keywords": ["thread", "synchronized", "concurrent"]
+            }
+        ]
+    },
+
+    "Python": {
+        "Beginner": [
+            {
+                "question": "What is Python?",
+                "keywords": ["programming", "language", "interpreted"]
+            },
+            {
+                "question": "What is a list in Python?",
+                "keywords": ["ordered", "mutable", "collection"]
+            },
+            {
+                "question": "What is a tuple?",
+                "keywords": ["ordered", "immutable", "collection"]
+            }
+        ],
+        "Intermediate": [
+            {
+                "question": "What is a decorator in Python?",
+                "keywords": ["function", "wrapper", "modify"]
+            },
+            {
+                "question": "What is list comprehension?",
+                "keywords": ["list", "loop", "expression"]
+            },
+            {
+                "question": "What is exception handling?",
+                "keywords": ["try", "except", "error"]
+            }
+        ],
+        "Advanced": [
+            {
+                "question": "What are Python generators?",
+                "keywords": ["yield", "iterator", "lazy"]
+            },
+            {
+                "question": "What is the Global Interpreter Lock?",
+                "keywords": ["GIL", "thread", "Python"]
+            },
+            {
+                "question": "What are metaclasses in Python?",
+                "keywords": ["class", "type", "object"]
+            }
+        ]
+    },
+
+    "DSA": {
+        "Beginner": [
+            {
+                "question": "What is an array?",
+                "keywords": ["elements", "index", "memory"]
+            },
+            {
+                "question": "What is a stack?",
+                "keywords": ["LIFO", "push", "pop"]
+            },
+            {
+                "question": "What is a queue?",
+                "keywords": ["FIFO", "enqueue", "dequeue"]
+            }
+        ],
+        "Intermediate": [
+            {
+                "question": "What is binary search?",
+                "keywords": ["sorted", "divide", "half"]
+            },
+            {
+                "question": "What is a linked list?",
+                "keywords": ["nodes", "pointer", "data"]
+            },
+            {
+                "question": "What is a hash table?",
+                "keywords": ["key", "value", "hash"]
+            }
+        ],
+        "Advanced": [
+            {
+                "question": "What is dynamic programming?",
+                "keywords": ["subproblem", "optimization", "memoization"]
+            },
+            {
+                "question": "What is a graph?",
+                "keywords": ["vertices", "edges", "nodes"]
+            },
+            {
+                "question": "What is the time complexity of merge sort?",
+                "keywords": ["O", "nlogn", "log"]
+            }
+        ]
+    },
+
+    "DBMS": {
+        "Beginner": [
+            {
+                "question": "What is DBMS?",
+                "keywords": ["database", "management", "system"]
+            },
+            {
+                "question": "What is a primary key?",
+                "keywords": ["unique", "identify", "record"]
+            },
+            {
+                "question": "What is SQL?",
+                "keywords": ["query", "database", "language"]
+            }
+        ],
+        "Intermediate": [
+            {
+                "question": "What is normalization?",
+                "keywords": ["redundancy", "data", "tables"]
+            },
+            {
+                "question": "What is a foreign key?",
+                "keywords": ["table", "reference", "primary"]
+            },
+            {
+                "question": "What is a JOIN?",
+                "keywords": ["tables", "combine", "rows"]
+            }
+        ],
+        "Advanced": [
+            {
+                "question": "What is database indexing?",
+                "keywords": ["index", "search", "performance"]
+            },
+            {
+                "question": "What is a database transaction?",
+                "keywords": ["ACID", "transaction", "database"]
+            },
+            {
+                "question": "What is database deadlock?",
+                "keywords": ["transaction", "lock", "wait"]
+            }
+        ]
+    },
+
+    "Computer Networks": {
+        "Beginner": [
+            {
+                "question": "What is a computer network?",
+                "keywords": ["devices", "communication", "network"]
+            },
+            {
+                "question": "What is an IP address?",
+                "keywords": ["address", "device", "network"]
+            },
+            {
+                "question": "What is DNS?",
+                "keywords": ["domain", "name", "IP"]
+            }
+        ],
+        "Intermediate": [
+            {
+                "question": "What is the difference between TCP and UDP?",
+                "keywords": ["connection", "reliable", "fast"]
+            },
+            {
+                "question": "What is HTTP?",
+                "keywords": ["protocol", "web", "communication"]
+            },
+            {
+                "question": "What is the OSI model?",
+                "keywords": ["layers", "network", "model"]
+            }
+        ],
+        "Advanced": [
+            {
+                "question": "How does TCP congestion control work?",
+                "keywords": ["congestion", "window", "network"]
+            },
+            {
+                "question": "What is subnetting?",
+                "keywords": ["network", "subnet", "IP"]
+            },
+            {
+                "question": "What is routing?",
+                "keywords": ["packet", "router", "network"]
+            }
+        ]
+    }
+}

@@ -1,5 +1,13 @@
+import json
+
+# Load questions from JSON file
+with open("data/questions.json", "r") as file:
+    questions_data = json.load(file)
+
 print("🤖 Welcome to InterviewBot!")
-print("Choose your interview:")
+
+# Choose interview category
+print("\nChoose your interview:")
 print("1. Java")
 print("2. Python")
 print("3. DSA")
@@ -8,156 +16,47 @@ print("5. Computer Networks")
 
 choice = input("Enter your choice: ")
 
-if choice == "1":
-    category = "Java"
-    questions = [
-        {
-            "question": "What is Java?",
-            "keywords": ["programming", "object", "oriented"]
-        },
-        {
-            "question": "What is OOP?",
-            "keywords": ["object", "class", "inheritance"]
-        },
-        {
-            "question": "What is inheritance in Java?",
-            "keywords": ["class", "parent", "child", "inherit"]
-        },
-        {
-            "question": "What is an ArrayList?",
-            "keywords": ["dynamic", "array", "collection"]
-        },
-        {
-            "question": "What is a constructor?",
-            "keywords": ["class", "object", "initialize"]
-        }
-    ]
+categories = {
+    "1": "Java",
+    "2": "Python",
+    "3": "DSA",
+    "4": "DBMS",
+    "5": "Computer Networks"
+}
 
-elif choice == "2":
-    category = "Python"
-    questions = [
-        {
-            "question": "What is Python?",
-            "keywords": ["programming", "language", "interpreted"]
-        },
-        {
-            "question": "What is a list in Python?",
-            "keywords": ["ordered", "mutable", "collection"]
-        },
-        {
-            "question": "What is a tuple?",
-            "keywords": ["ordered", "immutable", "collection"]
-        },
-        {
-            "question": "What is a dictionary?",
-            "keywords": ["key", "value", "pair"]
-        },
-        {
-            "question": "What is OOP in Python?",
-            "keywords": ["object", "class", "inheritance"]
-        }
-    ]
-
-elif choice == "3":
-    category = "DSA"
-    questions = [
-        {
-            "question": "What is an array?",
-            "keywords": ["elements", "index", "memory"]
-        },
-        {
-            "question": "What is a linked list?",
-            "keywords": ["nodes", "pointer", "data"]
-        },
-        {
-            "question": "What is a stack?",
-            "keywords": ["lifo", "push", "pop"]
-        },
-        {
-            "question": "What is a queue?",
-            "keywords": ["fifo", "enqueue", "dequeue"]
-        },
-        {
-            "question": "What is binary search?",
-            "keywords": ["sorted", "divide", "half"]
-        }
-    ]
-
-elif choice == "4":
-    category = "DBMS"
-    questions = [
-        {
-            "question": "What is DBMS?",
-            "keywords": ["database", "management", "system"]
-        },
-        {
-            "question": "What is a primary key?",
-            "keywords": ["unique", "identify", "record"]
-        },
-        {
-            "question": "What is a foreign key?",
-            "keywords": ["table", "reference", "primary"]
-        },
-        {
-            "question": "What is normalization?",
-            "keywords": ["redundancy", "data", "tables"]
-        },
-        {
-            "question": "What is SQL?",
-            "keywords": ["query", "database", "language"]
-        }
-    ]
-
-elif choice == "5":
-    category = "Computer Networks"
-    questions = [
-        {
-            "question": "What is a computer network?",
-            "keywords": ["devices", "communication", "network"]
-        },
-        {
-            "question": "What is an IP address?",
-            "keywords": ["address", "device", "network"]
-        },
-        {
-            "question": "What is the difference between TCP and UDP?",
-            "keywords": ["connection", "reliable", "fast"]
-        },
-        {
-            "question": "What is DNS?",
-            "keywords": ["domain", "name", "ip"]
-        },
-        {
-            "question": "What is HTTP?",
-            "keywords": ["protocol", "web", "communication"]
-        }
-    ]
-
-else:
+if choice not in categories:
     print(" Invalid choice!")
     exit()
 
-# Difficulty selection
+category = categories[choice]
 
-print("\n Choose difficulty Level:")
+
+# Choose difficulty
+print("\nChoose difficulty:")
 print("1. Easy")
 print("2. Intermediate")
 print("3. Advanced")
 
-difficulty = input("Enter your choice (1-3): ")
+difficulty_choice = input("Enter difficulty: ")
 
-if difficulty == "1":
-    difficulty = "Easy"
-elif difficulty == "2":
-    difficulty = "Intermediate"
-elif difficulty == "3":
-    difficulty = "Advanced"
-else:
-    print("Invalid choice!")
+difficulties = {
+    "1": "Easy",
+    "2": "Intermediate",
+    "3": "Advanced"
+}
+
+if difficulty_choice not in difficulties:
+    print("❌ Invalid difficulty!")
     exit()
 
-# Start interview
+difficulty = difficulties[difficulty_choice]
 
+
+# Get questions based on category and difficulty
+questions = questions_data[category][difficulty]
+
+
+# Start interview
 print("\n--------------------------------")
 print("Interview Started")
 print("Category:", category)
@@ -169,18 +68,19 @@ print("Type 'exit' anytime to end.\n")
 score = 0
 
 for question in questions:
+
     print("Bot:", question["question"])
-    answer = input("You:").lower()
+
+    answer = input("You: ").lower()
 
     if answer == "exit":
         print("Bot: Interview ended. Goodbye! 👋")
         break
 
-    
     matched_keywords = 0
 
     for keyword in question["keywords"]:
-        if keyword in answer:
+        if keyword.lower() in answer:
             matched_keywords += 1
 
     if matched_keywords >= 2:
