@@ -1,54 +1,5 @@
-import json
-
-# Load questions from JSON file
-with open("data/questions.json", "r") as file:
-    questions_data = json.load(file)
-
-
-class Interview:
-
-    def __init__(self, category, difficulty, questions):
-        self.category = category
-        self.difficulty = difficulty
-        self.questions = questions
-        self.score = 0
-
-    def conduct_interview(self):
-        print("\nLet's begin the interview!")
-        print("Type 'exit' anytime to end.\n")
-
-        for question in self.questions:
-
-            print("Bot:", question["question"])
-
-            answer = input("You: ").lower()
-
-            if answer == "exit":
-                print("Bot: Interview ended. Goodbye! 👋")
-                break
-
-            matched_keywords = 0
-
-            for keyword in question["keywords"]:
-                if keyword.lower() in answer:
-                    matched_keywords += 1
-
-            if matched_keywords >= 2:
-                print("Bot: ✅ Good answer!")
-                self.score += 1
-            else:
-                print("Bot: ⚠️ Your answer needs improvement.")
-
-            print()
-
-    def show_result(self):
-        print("--------------------------------")
-        print("       INTERVIEW RESULT")
-        print("--------------------------------")
-        print("Category:", self.category)
-        print("Difficulty:", self.difficulty)
-        print("Score:", self.score, "/", len(self.questions))
-        print("--------------------------------")
+from src.questions import load_questions
+from src.interview import Interview
 
 
 def choose_category():
@@ -71,7 +22,7 @@ def choose_category():
     }
 
     if choice not in categories:
-        print("❌ Invalid choice!")
+        print(" Invalid choice!")
         return None
 
     return categories[choice]
@@ -80,20 +31,20 @@ def choose_category():
 def choose_difficulty():
 
     print("\nChoose difficulty:")
-    print("1. Easy")
+    print("1. Beginner")
     print("2. Intermediate")
     print("3. Advanced")
 
     choice = input("Enter difficulty: ")
 
     difficulties = {
-        "1": "Easy",
+        "1": "Beginner",
         "2": "Intermediate",
         "3": "Advanced"
     }
 
     if choice not in difficulties:
-        print(" Invalid difficulty!")
+        print("❌ Invalid difficulty!")
         return None
 
     return difficulties[choice]
@@ -101,26 +52,36 @@ def choose_difficulty():
 
 def main():
 
-    print("🤖 Welcome to InterviewBot!")
+    print("================================")
+    print("       🤖 InterviewBot")
+    print("================================")
 
+    # Load questions
+    questions_data = load_questions()
+
+    # Choose category
     category = choose_category()
 
     if category is None:
         return
 
+    # Choose difficulty
     difficulty = choose_difficulty()
 
     if difficulty is None:
         return
 
+    # Get questions
     questions = questions_data[category][difficulty]
 
+    # Create interview
     interview = Interview(
         category,
         difficulty,
         questions
     )
 
+    # Start interview
     print("\n--------------------------------")
     print("Interview Started")
     print("Category:", category)
@@ -129,6 +90,7 @@ def main():
 
     interview.conduct_interview()
 
+    # Show result
     interview.show_result()
 
 
