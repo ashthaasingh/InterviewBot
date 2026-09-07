@@ -67,7 +67,6 @@ class Interview:
 
         print("Category:", self.category)
         print("Difficulty:", self.difficulty)
-
         print("Questions:", len(self.questions))
         print("Attempted:", self.attempted)
 
@@ -78,5 +77,27 @@ class Interview:
 
         print("Total Score:", self.total_score)
         print("Average Score:", round(average_score, 2), "/ 10")
+
+        # Determine performance
+        if average_score >= 9:
+            performance = "Excellent 🌟"
+            recommendation = "You have a strong understanding of the concepts."
+
+        elif average_score >= 7:
+            performance = "Good 👍"
+            recommendation = "Good performance. Practice advanced concepts to improve further."
+
+        elif average_score >= 5:
+            performance = "Average 🙂"
+            recommendation = "Review the important concepts and practice more questions."
+
+        else:
+            performance = "Needs Improvement ⚠️"
+            recommendation = "Focus on the fundamentals and practice regularly."
+
+        print("Performance:", performance)
+
+        print("\nRecommendation:")
+        print(recommendation)
 
         print("--------------------------------")
