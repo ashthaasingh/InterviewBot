@@ -7,7 +7,9 @@ class Interview:
 
         self.category = category
         self.difficulty = difficulty
-        self.questions = questions
+        self.questions_data = questions
+
+        self.questions = self.questions_data[difficulty]
 
         self.score = 0
         self.total_score = 0
@@ -20,10 +22,15 @@ class Interview:
         print("\nLet's begin the interview!")
         print("Type 'exit' anytime to end.\n")
 
-        for question_number, question in enumerate(self.questions, start=1):
+        current_difficulty = self.difficulty
+
+        questions = self.questions_data[current_difficulty]
+
+        for question_number, question in enumerate(questions, start=1):
 
             print("--------------------------------")
             print(f"Question {question_number}")
+            print(f"Difficulty: {current_difficulty}")
             print("--------------------------------")
 
             print("Bot:", question["question"])

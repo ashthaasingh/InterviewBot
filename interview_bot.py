@@ -78,7 +78,7 @@ def main():
     interview = Interview(
         category,
         difficulty,
-        questions
+        questions_data[category]
     )
 
     # Start interview
